@@ -22,7 +22,10 @@ app.use(morgan("dev"));
  * @description Root route
  */
 app.get('/', (req, res) => {
-    res.setHeader('Set-Cookie', 'user-id=1')
+    console.log(req.get('Cookie'));
+
+    res.setHeader('Set-Cookie', 'user-id=1; Max-Age=1000') //set cookies
+
     res.send('server is up!');
 });
 
