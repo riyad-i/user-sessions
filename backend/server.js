@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 
     req.session.username = 'riyad'
     req.session.jwtToken = 'randomsltjgsnl'
-    req.session.views = (req.session.views ? req.session.views + 1 : 0)
+    req.session.views = (req.session.views || 0) + 1
     // console.log(req.get('Cookie'));
 
     // res.setHeader('Set-Cookie', 'user-id=1; Max-Age=1000') //set cookies
