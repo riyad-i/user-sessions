@@ -1,7 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const db = require('./utils/db');
-
+const cookieParser = require('cookie-parser')
 
 
 // ===== Constants ===== //
@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
-
+app.use(cookieParser())
 
 // ===== Routes ===== //
 /**
@@ -22,9 +22,10 @@ app.use(morgan("dev"));
  * @description Root route
  */
 app.get('/', (req, res) => {
-    console.log(req.get('Cookie'));
+    console.log(req.cookies);
+    // console.log(req.get('Cookie'));
 
-    res.setHeader('Set-Cookie', 'user-id=1; Max-Age=1000') //set cookies
+    // res.setHeader('Set-Cookie', 'user-id=1; Max-Age=1000') //set cookies
 
     res.send('server is up!');
 });
